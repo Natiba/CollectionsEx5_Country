@@ -11,7 +11,7 @@ public class CollectionsEj5_paises {
         
         paiS.crear();
         
-        System.out.println("Existe el pais? " + paiS.buscar());
+        //System.out.println("Existe el pais? " + paiS.buscar());
         
         paiS.eliminar();
         

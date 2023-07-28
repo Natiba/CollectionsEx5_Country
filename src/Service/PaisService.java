@@ -9,7 +9,7 @@ import jdk.nashorn.internal.ir.WhileNode;
 public class PaisService {
 
     Scanner sc;
-    TreeSet<String> listaPaises;
+    TreeSet<Pais> listaPaises;
 
     public PaisService() {
 
@@ -28,7 +28,7 @@ public class PaisService {
             System.out.println("Ingrese un país, por favor");
             paisIngresado = sc.next();
 
-            listaPaises.add(paisIngresado);
+            listaPaises.add(new Pais(paisIngresado));
 
             System.out.println("Desea agregar otro país? (S/N)");
             opcion = sc.next();
@@ -43,7 +43,7 @@ public class PaisService {
 
     public void mostrar() {
 
-        for (String pais : listaPaises) {
+        for (Pais pais : listaPaises) {
             System.out.println(pais);
         }
 
@@ -51,14 +51,14 @@ public class PaisService {
         // Ver v7, ejemplos del video... con implements, hashSet, etc..
     }
 
-    public boolean buscar() {
-
-        System.out.println("Ingrese país a buscar, por favor");
-        String paisBuscado = sc.next();
-
-        return listaPaises.contains(paisBuscado);
-
-    }  // ne teoria esto funciona... me da true si el pais existe!! Y false si no existe.
+//    public boolean buscar() {
+//
+//        System.out.println("Ingrese país a buscar, por favor");
+//        String paisBuscado = sc.next();
+//
+//        return listaPaises.contains(paisBuscado);
+//
+//    }  // En teoria esto funciona... me da true si el pais existe!! Y false si no existe.
 
     public void eliminar() {
 
@@ -66,9 +66,9 @@ public class PaisService {
         String paisElegido = sc.next();
         boolean flag = false;
         paisElegido = paisElegido.toLowerCase();
-        Iterator<String> it = listaPaises.iterator();
+        Iterator<Pais> it = listaPaises.iterator();
         while (it.hasNext()) {
-            if (it.next().equalsIgnoreCase(paisElegido)) {
+            if (it.next().getNombrePais().equalsIgnoreCase(paisElegido)) {
                 it.remove();
                 flag = true;
             }
